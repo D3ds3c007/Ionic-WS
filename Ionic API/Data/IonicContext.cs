@@ -33,6 +33,11 @@ public partial class IonicContext : DbContext
         modelBuilder.Entity<General>()
             .HasOne(g => g.Equipe);
 
+        modelBuilder.Entity<Defense>()
+            .HasOne(d => d.Equipe);
+        modelBuilder.Entity<Attaque>()
+            .HasOne(a => a.Equipe);
+
 
 
     }
@@ -43,4 +48,6 @@ public partial class IonicContext : DbContext
     public DbSet<Ionic_API.Models.Equipe> Equipes { get; set;}
     public DbSet<Ionic_API.Models.Competition> Competitions { get; set;}
     public DbSet<Ionic_API.Models.General> General { get; set;}
+    public DbSet<Ionic_API.Models.Defense> Defense { get; set;}
+    public DbSet<Ionic_API.Models.Attaque> Attaque { get; set;}
 }

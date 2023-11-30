@@ -3,6 +3,7 @@ using Ionic_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ionic_API.Migrations
 {
     [DbContext(typeof(IonicContext))]
-    partial class IonicContextModelSnapshot : ModelSnapshot
+    [Migration("20231130171630_defense")]
+    partial class defense
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,42 +26,6 @@ namespace Ionic_API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Ionic_API.Models.Attaque", b =>
-                {
-                    b.Property<int>("idAttaque")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idAttaque"));
-
-                    b.Property<double>("dribblesPM")
-                        .HasColumnType("float");
-
-                    b.Property<double>("fautesSubiesPM")
-                        .HasColumnType("float");
-
-                    b.Property<int>("idEquipe")
-                        .HasColumnType("int");
-
-                    b.Property<double>("note")
-                        .HasColumnType("float");
-
-                    b.Property<int>("sousType")
-                        .HasColumnType("int");
-
-                    b.Property<double>("tirsCApm")
-                        .HasColumnType("float");
-
-                    b.Property<double>("tirsPM")
-                        .HasColumnType("float");
-
-                    b.HasKey("idAttaque");
-
-                    b.HasIndex("idEquipe");
-
-                    b.ToTable("Attaque");
-                });
 
             modelBuilder.Entity("Ionic_API.Models.Competition", b =>
                 {
@@ -181,17 +148,6 @@ namespace Ionic_API.Migrations
                     b.HasIndex("idEquipe");
 
                     b.ToTable("General");
-                });
-
-            modelBuilder.Entity("Ionic_API.Models.Attaque", b =>
-                {
-                    b.HasOne("Ionic_API.Models.Equipe", "Equipe")
-                        .WithMany()
-                        .HasForeignKey("idEquipe")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Equipe");
                 });
 
             modelBuilder.Entity("Ionic_API.Models.Defense", b =>

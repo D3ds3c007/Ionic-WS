@@ -3,6 +3,7 @@ using Ionic_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Ionic_API.Migrations
 {
     [DbContext(typeof(IonicContext))]
-    partial class IonicContextModelSnapshot : ModelSnapshot
+    [Migration("20231130173026_attaque")]
+    partial class attaque
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,7 +60,7 @@ namespace Ionic_API.Migrations
 
                     b.HasIndex("idEquipe");
 
-                    b.ToTable("Attaque");
+                    b.ToTable("Attaques");
                 });
 
             modelBuilder.Entity("Ionic_API.Models.Competition", b =>
